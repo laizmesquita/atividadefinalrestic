@@ -1,4 +1,6 @@
 import { ThemeProvider } from 'styled-components';
+import React from 'react';
+import { AuthProvider, useAuth } from './src/contexts/AuthContext';
 import { StatusBar } from 'expo-status-bar';
 import { Ionicons } from '@expo/vector-icons';
 import { NavigationContainer } from '@react-navigation/native';
@@ -57,19 +59,35 @@ function Auth(){
   )
 }
 
+function AppNavigator() {
+  const { isAuthenticated } = useAuth(); 
+
+  return (
+    <Stack.Navigator initialRouteName={isAuthenticated ? 'Auth' : 'Login'} screenOptions={{ headerShown: false }}>
+      {!isAuthenticated ? (
+        <Stack.Screen name="Login" component={Login} />
+      ) : (
+        <>
+          <Stack.Screen name="Auth" component={Auth} />
+          <Stack.Screen name="FormScreen" component={FormScreen} />
+        </>
+      )}
+    </Stack.Navigator>
+  );
+}
 
 export default function App() {
   return (
-    <ThemeProvider theme={theme}>
-      <StatusBar style="auto" />
-      <NavigationContainer>
-        <Stack.Navigator initialRouteName='Login' screenOptions={{ headerShown: false }}>
-          <Stack.Screen name="Login" component={Login} />
-          <Stack.Screen name="FormScreen" component={FormScreen} />
-          <Stack.Screen name="Auth" component={Auth} />
-        </Stack.Navigator>
-      </NavigationContainer>
-    </ThemeProvider>
+    <AuthProvider>
+      <ThemeProvider theme={theme}>
+        <StatusBar style="auto" />
+        <NavigationContainer>
+          <Stack.Navigator initialRouteName='Login' screenOptions={{ headerShown: false }}>
+            <AppNavigator />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </ThemeProvider>
+    </AuthProvider>
   );
 }
 
