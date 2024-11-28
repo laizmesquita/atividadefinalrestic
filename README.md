@@ -1,13 +1,9 @@
 
-Requisitos para Rodar o Projeto
+Requisitos para Rodar o Projeto: Node.js / Yarn ou NPM / Expo CLI
 
-Node.js
-
-Yarn ou NPM
-
-Expo CLI
 
 Como Rodar o Projeto Localmente
+
 
 Clone este repositório:
 
