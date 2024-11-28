@@ -65,11 +65,16 @@ function AppNavigator() {
   return (
     <Stack.Navigator initialRouteName={isAuthenticated ? 'Auth' : 'Login'} screenOptions={{ headerShown: false }}>
       {!isAuthenticated ? (
-        <Stack.Screen name="Login" component={Login} />
+      <>
+      <Stack.Screen name="Login" component={Login} />
+      <Stack.Screen name="FormScreen" component={FormScreen} />
+        
+      </>
+        
       ) : (
         <>
           <Stack.Screen name="Auth" component={Auth} />
-          <Stack.Screen name="FormScreen" component={FormScreen} />
+          
         </>
       )}
     </Stack.Navigator>
@@ -82,9 +87,9 @@ export default function App() {
       <ThemeProvider theme={theme}>
         <StatusBar style="auto" />
         <NavigationContainer>
-          <Stack.Navigator initialRouteName='Login' screenOptions={{ headerShown: false }}>
+          
             <AppNavigator />
-          </Stack.Navigator>
+          
         </NavigationContainer>
       </ThemeProvider>
     </AuthProvider>

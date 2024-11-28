@@ -24,7 +24,7 @@ export default function Login({ navigation }) {
             if(user){
                 navigation.navigate('Auth', {screenn: 'home'})
             }else{
-                console.log('Login falou.')
+                console.log('Login falhou.')
             }
 
         }catch(error){
