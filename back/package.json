@@ -1,0 +1,18 @@
+{
+  "name": "api-express",
+  "version": "1.0.0",
+  "description": "",
+  "main": "api.js",
+  "scripts": {
+    "start": "nodemon --exec node server.js"
+  },
+  "author": "Jeferson",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2",
+    "nodemon": "^3.1.4",
+    "sequelize": "^6.37.3",
+    "sqlite3": "^5.1.7",
+    "uuid": "^10.0.0"
+  }
+}
